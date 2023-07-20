@@ -1,0 +1,7 @@
+﻿https://youtu.be/elMpS1Js7rc
+
+https://www.youtube.com/watch?v=hpLvXNASyTI
+5:12
+
+docker-compose file-ban
+  driver: host

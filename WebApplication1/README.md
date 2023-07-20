@@ -3,7 +3,7 @@
 
 2. Add the anything folder to your c: in windows.
  
-3. Copy compose.yaml to your created folders in windows.
+3. Copy DockerComposeWindows\compose.yaml to your created folders in windows.
 
 4. The 'docker-compose run' in terminal your created folders build the image.
 

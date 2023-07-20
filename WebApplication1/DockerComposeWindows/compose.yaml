@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+  apialkalmazasnetwork:
+
+services:
+  demoappdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 8002:1433
+    volumes:
+      - c:\temp\sqlserver:/var/opt/mssql/data
+
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Proba123
+    networks:
+      - apialkalmazasnetwork
+  webapplication1:
+    container_name: demo-netcore-webapi
+    image: sndock11/webapplication1
+    ports:
+      - 8001:80
+      - 8003:443
+    depends_on:
+      - demoappdb
+    environment:
+      - DB_HOST=demoappdb
+      - DB_Name=Homersekletek
+      - DB_SA_PASSWORD=Proba123
+    networks:
+      - apialkalmazasnetwork

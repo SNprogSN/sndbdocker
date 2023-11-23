@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "WebApplication1": {
+    "sndbdocker": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
-using WebApplication1.Models;
+using sndbdocker.Models;
 
-namespace WebApplication1.Data
+namespace sndbdocker.Data
 {
     public class HomersekletekDbContext : DbContext
     {

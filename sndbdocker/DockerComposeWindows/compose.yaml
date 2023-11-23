@@ -17,9 +17,9 @@ services:
       - SA_PASSWORD=Proba123
     networks:
       - apialkalmazasnetwork
-  webapplication1:
+  sndbdocker:
     container_name: demo-netcore-webapi
-    image: sndock11/webapplication1
+    image: sndock11/sndbdocker
     ports:
       - 8001:80
       - 8003:443

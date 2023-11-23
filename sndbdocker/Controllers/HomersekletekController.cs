@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Data;
-using WebApplication1.Models;
+using sndbdocker.Data;
+using sndbdocker.Models;
 
-namespace WebApplication1.Controllers
+namespace sndbdocker.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

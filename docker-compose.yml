@@ -2,22 +2,22 @@ version: '3.4'
 
 networks:
   apialkalmazasnetwork:
-  
+
 
 services:
   demoappdb:
     container_name: app-db
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
-        - 8002:1433
+      - 8002:1433
     volumes:
-        - ./data:/var/opt/mssql/data
+      - ./data:/var/opt/mssql/data
 
     environment:
-        - ACCEPT_EULA=Y
-        - SA_PASSWORD=Proba123
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Proba123
     networks:
-       - apialkalmazasnetwork
+      - apialkalmazasnetwork
   sndbdocker:
     container_name: demo-netcore-webapi
     image: ${DOCKER_REGISTRY-}sndbdocker
@@ -25,13 +25,13 @@ services:
       context: .
       dockerfile: sndbdocker/Dockerfile
     ports:
-        - 8001:80
-        - 8003:443
+      - 8001:80
+      - 8003:443
     depends_on:
-        - demoappdb
+      - demoappdb
     environment:
-        - DB_HOST=demoappdb
-        - DB_NAME=Homersekletek
-        - DB_SA_PASSWORD=Proba123
+      - DB_HOST=demoappdb
+      - DB_NAME=Homersekletek
+      - DB_SA_PASSWORD=Proba123
     networks:
-       - apialkalmazasnetwork
+      - apialkalmazasnetwork

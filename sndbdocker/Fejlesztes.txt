@@ -1,4 +1,13 @@
-﻿https://youtu.be/elMpS1Js7rc
+﻿
+Git Repo:
+SNprogSN/sndbdocker
+
+Dockerhub:
+sndock11/sndbdocker
+
+-------------------------------------------------------------------------------
+
+https://youtu.be/elMpS1Js7rc
 
 https://www.youtube.com/watch?v=hpLvXNASyTI
 5:12

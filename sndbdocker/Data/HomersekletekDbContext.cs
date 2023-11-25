@@ -14,8 +14,12 @@ namespace sndbdocker.Data
                 var databaseCreator = Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
                 if(databaseCreator != null)
                 {
-                   if (!databaseCreator.CanConnect()) databaseCreator.Create();
-                   if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
+                    //Ha van adatbázis, akkor töröljük
+                    //if (databaseCreator.HasTables()) databaseCreator.EnsureDeleted();
+                    if (!databaseCreator.CanConnect()) databaseCreator.Create();
+                    if (!databaseCreator.HasTables()) databaseCreator.CreateTables();
+                    //if (!databaseCreator.HasTables()) databaseCreator.EnsureCreated();
+                    
                 }
             }
             catch (Exception ex) 
@@ -26,5 +30,6 @@ namespace sndbdocker.Data
         }
 
         public DbSet<Homersekletek> Homersekletek { get; set; }
+        public DbSet<Coffee> Coffee { get; set; }
     }
 }

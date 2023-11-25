@@ -18,6 +18,7 @@ var connectionString = $"Server={dbHost};Database={dbName};User Id=sa;Password={
 /* Az SqlServerqckidsyn112 cseréje connectionString-re esetén a dockercompose használata */
 builder.Services.AddDbContext<HomersekletekDbContext>(opt => opt.UseSqlServer(connectionString));
 
+
 var app = builder.Build();
 
 //// Configure the HTTP request pipeline.

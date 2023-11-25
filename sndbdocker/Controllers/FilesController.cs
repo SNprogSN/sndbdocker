@@ -27,14 +27,21 @@ namespace FileUploadDownload.Controllers
                 var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length -1];
                 fileName = DateTime.Now.Ticks.ToString() + extension; //Create a new Name for the file due to security reasons.
 
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
+                //Docker konténer Linux
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "/app/upload/files");
+                //Windows filerendszer
+                //var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
 
-                if(!Directory.Exists(filePath))
+                if (!Directory.Exists(filePath))
                 {
                     Directory.CreateDirectory(filePath);
                 }
 
-                var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", fileName);
+                //Docker konténer Linux
+                var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "/app/upload/files", fileName);
+                //Windows filerendszer
+                //var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", fileName);
+
                 using (var stream = new FileStream(exactpath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
@@ -51,7 +58,10 @@ namespace FileUploadDownload.Controllers
         [Route("DownloadFile")]
         public async Task<IActionResult> DownloadFile(string filename)
         {
-            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
+            //Docker konténer Linux
+            var filepath = Path.Combine(Directory.GetCurrentDirectory(), "/app/upload/files", filename);
+            //Windows filerendszer
+            //var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
 
             var provider = new FileExtensionContentTypeProvider();
             if(!provider.TryGetContentType(filepath, out var contentType))

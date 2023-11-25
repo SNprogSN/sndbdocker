@@ -19,4 +19,8 @@ RUN dotnet publish "sndbdocker.csproj" -c Release -o /app/publish /p:UseAppHost=
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# Create the uploads directory within the container
+RUN mkdir -p /app/uploads/files
+
 ENTRYPOINT ["dotnet", "sndbdocker.dll"]]

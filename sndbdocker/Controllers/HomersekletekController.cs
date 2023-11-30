@@ -38,10 +38,17 @@ namespace sndbdocker.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> PostHomersekletek(Homersekletek homersekletek)
         {
+            if (_context.Homersekletek == null)
+            {
+                return Problem("Entity set 'ESP32DataContext.HomeroAdatoks'  is null.");
+            }
+            homersekletek.HomersekletId = 0;
+            homersekletek.MeresDatuma = DateTime.Now;
+            homersekletek.HomeroNeve = "egyes";
             await _context.Homersekletek.AddAsync(homersekletek);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetHomersekletek), new { id = homersekletek.HofokId }, homersekletek);
+            return CreatedAtAction(nameof(GetHomersekletek), new { id = homersekletek.HomersekletId }, homersekletek);
         }
 
         [HttpPut("{id}")]
@@ -49,7 +56,7 @@ namespace sndbdocker.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutHomersekletek(int id, Homersekletek homersekletek)
         {
-            if (id != homersekletek.HofokId)
+            if (id != homersekletek.HomersekletId)
             {
                 return BadRequest();
             }
